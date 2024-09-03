@@ -1,0 +1,61 @@
+
+.title_text {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700; /* Use 300, 400, or 700 as per your preference */
+    font-size: 5em; /* Adjust size as needed */
+    background: -webkit-linear-gradient(white, #38495a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.top_options_panel {
+    position: absolute;
+    top: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+  
+.menu {
+    border-radius: 50px;
+    padding: 10px 20px;
+    width: 100px;
+    height: 40px;
+    background-color: transparent;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 18px;
+    color: #fff;
+    backface-visibility: hidden;
+    border: 0.3rem solid transparent;
+    border-radius: 3rem;
+    margin: 0 10px; /* Add horizontal space between buttons */
+  }
+  
+.menu:hover {
+    background-color: #8f90bb;
+}
+
+.main_login_container {
+    position: absolute;
+    top: 60px;
+    right: 50px;
+    display: flex;
+    align-items: center;
+  }
+  
+button[name="main_signup_btn"]:hover {
+    background-color: #8f90bb;
+}
+  
+.main_user_profile_logo {
+    width: 40px; 
+    height: 40px;
+    background-image:url(./blank_profile_picture.jpg);
+    background-size: cover;
+    background-position: center -1px;
+    border-radius: 50%;
+}
