@@ -1,6 +1,5 @@
 
 .title_text {
-    font-family: 'Lato', sans-serif;
     font-weight: 700; /* Use 300, 400, or 700 as per your preference */
     font-size: 5em; /* Adjust size as needed */
     background: -webkit-linear-gradient(white, #38495a);
@@ -54,8 +53,43 @@ button[name="main_signup_btn"]:hover {
 .main_user_profile_logo {
     width: 40px; 
     height: 40px;
-    background-image:url(./blank_profile_picture.jpg);
+    background-image:url(./pictures/blank_profile_picture.jpg);
     background-size: cover;
     background-position: center -1px;
     border-radius: 50%;
+}
+
+.main_user_profile_logo:hover {
+    box-shadow: 0 0 15px 5px rgba(0, 128, 255, 0.7);
+}
+
+.main_lowerbackground_container {
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+    height: 100vh; 
+    background-color: #3f6081cb; 
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(56, 52, 52);
+    border-radius: 4px;
+}
+
+.back_home_circle {
+    width: 40px;
+    height: 40px;
+    background-image:url(../components/pictures/back_home.png);
+    background-size:cover;
+    position: absolute;
+    left: 50px;
+    border-radius: 50%;
+    top: 50px;
+}
+
+.back_home_circle:hover {
+    box-shadow: 0 0 15px 5px rgba(0, 128, 255, 0.7);
 }
