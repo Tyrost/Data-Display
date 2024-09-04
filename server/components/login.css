@@ -12,11 +12,12 @@ body {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
     border: 2px solid #4f5158;
-    padding: 20px;
+    padding: 25px;
     border-radius: 10px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px;
+    left: 50px;
 }
 
 .input-box {
@@ -104,4 +105,7 @@ input[type="submit"]:hover {
     -webkit-text-fill-color: transparent;
     display: inline-block;
     top: 50px;
+
 }
+
+
