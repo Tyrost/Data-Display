@@ -1,4 +1,15 @@
 
+#data-text a.custom-link {
+    color: #ffcc00; /* Set the link color */
+    text-decoration: none; /* Removes the underline */
+  }
+  
+  #data-text a.custom-link:hover {
+    color: #ff9900; /* Change color on hover */
+    text-decoration: underline; /* Optionally add underline on hover */
+  }
+  
+
 .title_text {
     font-weight: 700; /* Use 300, 400, or 700 as per your preference */
     font-size: 5em; /* Adjust size as needed */
@@ -92,4 +103,27 @@ button[name="main_signup_btn"]:hover {
 
 .back_home_circle:hover {
     box-shadow: 0 0 15px 5px rgba(0, 128, 255, 0.7);
+}
+
+.earth {
+    position: absolute;
+    width: 800px;
+    height: 800px;
+    border-radius: 50%;
+    background: transparent url('./pictures/earth.png');
+    background-size: cover;
+    box-shadow: inset 0px -20px 50px 10px #29537ccb, 0px 0px 30px 6px #35597ecb;
+    transform-style: preserve-3d;
+    transform: rotate(20deg);
+    animation: rotate 30s linear infinite;
+    top: 80vh;
+}
+
+@keyframes rotate {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 530px 0;
+    }
 }
