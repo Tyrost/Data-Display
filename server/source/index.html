@@ -6,8 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Display</title>
-    <link rel="stylesheet" href="../components/main_page.css">
-    <link rel="stylesheet" href="../components/general.css">
+    <link rel="stylesheet" href="./frontend/components/main_page.css">
+    <link rel="stylesheet" href="./frontend/components/general.css">
   
 
 </head>
@@ -15,15 +15,15 @@
 <body>
   <div class="earth"></div>
     <div class="top_options_panel">
-        <button class="menu" name="main_home_btn" onclick="window.location.href='home.html';">Home</button>
-        <button class="menu" name="main_data_btn" onclick="window.location.href='data_page.html';">Data</button>
-        <button class="menu" name="main_markets_btn" onclick="window.location.href='markets_page.html';">Markets</button>
-        <button class="menu" name="main_countries_btn" onclick="window.location.href='countries_page.html';">Countries</button>
-        <button class="menu" name="main_news_btn" onclick="window.location.href='news_page.html';">News</button>
+        <button class="menu" name="main_home_btn" onclick="window.location.href='index.html';">Home</button>
+        <button class="menu" name="main_data_btn" onclick="window.location.href='./frontend/html/data_page.html';">Data</button>
+        <button class="menu" name="main_markets_btn" onclick="window.location.href='./frontend/html/markets_page.html';">Markets</button>
+        <button class="menu" name="main_countries_btn" onclick="window.location.href='./frontend/html/countries_page.html';">Countries</button>
+        <button class="menu" name="main_news_btn" onclick="window.location.href='./frontend/html/news_page.html';">News</button>
     </div>
 
     <div class="main_login_container">
-      <button class="menu" name="main_signup_btn" style="width: auto;" onclick="window.location.href='login_page.html';">Log In</button>
+      <button class="menu" name="main_signup_btn" style="width: auto;" onclick="window.location.href='./frontend/html/login_page.html';">Log In</button>
       <div class="main_user_profile_logo">
       </div>
     </div>
@@ -125,39 +125,38 @@
       <div class="panel-content">
         <h3 class="more-info-text" style="top: 40px; color: #9b8686;">Want more information?</h3>
         <h3 class="more-info-text" style="top: 55px; color: #ffffff; font-size: 30px;">Subscribe to our newsletter!</h3>
-    
+
         <div class="input-group" style="display: flex; flex-direction: row; gap: 15px; position: absolute; top: 70px; left: 45%;">
-          <form action="/submit" method="post" style="display: flex; flex-direction: row; gap: 15px;">
+          <form action="./backend/php/newsletter.php" method="post" style="display: flex; flex-direction: row; gap: 15px;">
             <div class="input-box" style="position: relative; flex: 1;">
-              <input type="email" name="email" required placeholder="Email" 
+              <input type="email" name="newsletter_email" required placeholder="Email" 
                      style="width: 80%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px;">
             </div>
             <div class="input-box" style="position: relative; flex: 1;">
-              <input type="text" name="name" required placeholder="Name" 
+              <input type="text" name="newsletter_name" required placeholder="Name" 
                      style="width: 80%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px;">
             </div>
             <input type="submit" name="submit-login" value="Subscribe" 
                    style="padding: 12px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">
           </form>
         </div>
-        
+
         <div class="menu-images-container">
           <div class="info-container">
             <h1 style="margin-top: 30%; margin-left: 10%;">Data</h1>
-            <a href="data_page.html">
-              <div class="menu-img" id="data-img" style="background-image: url(../components/pictures/data-img.jpg);"></div>
+            <a href="./frontend/html/data_page.html">
+              <div class="menu-img" id="data-img" style="background-image: url(./frontend/components/pictures/data-img.jpg);"></div>
             </a>
         
             <div class="data-paragraph" id="data-text">
               The shared data is crafted to provide you with swift, comprehensive insights into essential statistics, emerging trends, and the latest updates. Whether you're diving into raw numbers or seeking a broader overview, this section ensures you're always informed with precision and clarity. From detailed metrics to high-level summaries, we make it effortless to stay ahead of the curve and fully understand the information that matters most.
-              
             </div>
             
           </div>
           <div class="info-container">
             <h1 style="margin-top: 38%; margin-left: 60%;">Markets</h1>
-            <a href="markets_page.html">
-              <div class="menu-img" id="markets-img" style="background-image: url(../components/pictures/markets-img.jpg);"></div>
+            <a href="./frontend/html/markets_page.html">
+              <div class="menu-img" id="markets-img" style="background-image: url(./frontend/components/pictures/markets-img.jpg);"></div>
             </a>
         
             <div class="data-paragraph" id="markets-text">
@@ -168,8 +167,8 @@
           </div>
           <div class="info-container">
             <h1 style="margin-top: 46%; margin-left: 1%;">Countries</h1>
-            <a href="countries_page.html">
-              <div class="menu-img" id="countries-img" style="background-image: url(../components/pictures/countries-img.jpg);"></div>
+            <a href="./frontend/html/countries_page.html">
+              <div class="menu-img" id="countries-img" style="background-image: url(./frontend/components/pictures/countries-img.jpg);"></div>
             </a>
         
             <div class="data-paragraph" id="countries-text">
@@ -179,8 +178,8 @@
           </div>
           <div class="info-container">
             <h1 style="margin-top: 54%; margin-left: 64.5%;">News</h1>
-            <a href="news_page.html">
-              <div class="menu-img" id="news-img" style="background-image: url(../components/pictures/news-img.jpg);"></div>
+            <a href="./frontend/html/news_page.html">
+              <div class="menu-img" id="news-img" style="background-image: url(./frontend/components/pictures/news-img.jpg);"></div>
             </a>
         
             <div class="data-paragraph" id="news-text">
@@ -239,7 +238,7 @@ window.addEventListener('scroll', function() {
   const panelSection = document.querySelector('.bottom-panel-section');
   const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
 
-  if (scrollPosition > 300 && scrollPosition > lastScrollTop) {
+  if (scrollPosition > 400 && scrollPosition > lastScrollTop) {
     panelSection.classList.add('active');
   }
  
@@ -250,9 +249,6 @@ window.addEventListener('scroll', function() {
   lastScrollTop = scrollPosition;
 });
 
-
-
-
 </script>
 
    
@@ -260,3 +256,4 @@ window.addEventListener('scroll', function() {
 </body>
 
 </html>
+
