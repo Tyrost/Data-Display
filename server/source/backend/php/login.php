@@ -22,15 +22,30 @@
 
     # Get user login input #
 
+    function find_user_login($user_db) {
+
+        $email = $_POST['login-email'];
+        $password = $_POST['login-password'];
     
+        foreach($user_db as $user) {
+    
+            if ($email == $user['email'] && $password == $user['password']) {
+    
+                header('Location: ../../../index.html');
+                exit();
 
-    // $username = $_POST['login-username'];
-    // $password = $_POST['login-password'];
+                return true;
+                
+            } 
+        };
+        
+        header('Location: ../../frontend/html/login_page.html');
+        exit();
 
-    foreach($users as $user);
+        return false;
+    };
 
 
-
-    print_r($users);
+    $_SESSION['logged-in'] = find_user_login($users);
 
 ?>
