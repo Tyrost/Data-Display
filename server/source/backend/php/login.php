@@ -1,5 +1,7 @@
 <?php
 
+    require __DIR__."/authenticated.php";
+
     ## Prepare Connection ##
 
     $host = '127.0.0.1';
@@ -17,10 +19,7 @@
     $statement = $conn->prepare($query);
     $statement->execute();
     
-    # Get all users #
     $users = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-    # Get user login input #
 
     function find_user_login($user_db) {
 
@@ -30,22 +29,22 @@
         foreach($user_db as $user) {
     
             if ($email == $user['email'] && $password == $user['password']) {
-    
-                header('Location: ../../../index.html');
-                exit();
-
-                return true;
-                
+                return true;                
             } 
         };
-        
-        header('Location: ../../frontend/html/login_page.html');
-        exit();
-
         return false;
     };
-
+    
+    session_start();
 
     $_SESSION['logged-in'] = find_user_login($users);
+
+    if ($_SESSION['logged-in']) {
+        header('Location: /index.php');
+        exit();
+    } else { 
+        header('Location: /frontend/html/login_page.html');
+        exit();
+    }
 
 ?>

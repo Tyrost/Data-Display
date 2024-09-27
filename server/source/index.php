@@ -1,4 +1,12 @@
+<?php 
 
+session_start();
+
+$logged = isset($_SESSION['logged-in']) && $_SESSION['logged-in'] == true;
+
+$subscribed = isset($_SESSION['newsletter_sub']) && $_SESSION['newsletter_sub'] == true;
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,24 +14,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Display</title>
-    <link rel="stylesheet" href="./frontend/components/main_page.css">
-    <link rel="stylesheet" href="./frontend/components/general.css">
+    <link rel="stylesheet" href="/frontend/components/main_page.css">
+    <link rel="stylesheet" href="/frontend/components/general.css">
   
-
 </head>
 
 <body>
+
   <div class="earth"></div>
     <div class="top_options_panel">
-        <button class="menu" name="main_home_btn" onclick="window.location.href='index.html';">Home</button>
-        <button class="menu" name="main_data_btn" onclick="window.location.href='./frontend/html/data_page.html';">Data</button>
-        <button class="menu" name="main_markets_btn" onclick="window.location.href='./frontend/html/markets_page.html';">Markets</button>
-        <button class="menu" name="main_countries_btn" onclick="window.location.href='./frontend/html/countries_page.html';">Countries</button>
-        <button class="menu" name="main_news_btn" onclick="window.location.href='./frontend/html/news_page.html';">News</button>
+        <button class="menu" name="main_home_btn" onclick="window.location.href='index.php';">Home</button>
+        <button class="menu" name="main_data_btn" onclick="window.location.href='/frontend/html/data_page.php';">Data</button>
+        <button class="menu" name="main_markets_btn" onclick="window.location.href='/frontend/html/markets_page.html';">Markets</button>
+        <button class="menu" name="main_countries_btn" onclick="window.location.href='/frontend/html/countries_page.html';">Countries</button>
+        <button class="menu" name="main_news_btn" onclick="window.location.href='/frontend/html/news_page.html';">News</button>
     </div>
 
     <div class="main_login_container">
-      <button class="menu" name="main_signup_btn" style="width: auto;" onclick="window.location.href='./frontend/html/login_page.html';">Log In</button>
+    
+    <?php
+    if (!$logged) {
+        echo "<button class='menu' name='main_signup_btn' style='width: auto;' onclick=\"window.location.href='/frontend/html/login_page.html';\">Log In</button>";
+    } else {
+        echo "<button class='menu' name='main_signup_btn' style='width: auto;'>My Profile</button>";
+    }
+    ?>
+          
       <div class="main_user_profile_logo">
       </div>
     </div>
@@ -127,24 +143,31 @@
         <h3 class="more-info-text" style="top: 55px; color: #ffffff; font-size: 30px;">Subscribe to our newsletter!</h3>
 
         <div class="input-group" style="display: flex; flex-direction: row; gap: 15px; position: absolute; top: 70px; left: 45%;">
-          <form action="./backend/php/newsletter.php" method="post" style="display: flex; flex-direction: row; gap: 15px;">
-            <div class="input-box" style="position: relative; flex: 1;">
-              <input type="email" name="newsletter_email" required placeholder="Email" 
-                     style="width: 80%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px;">
-            </div>
-            <div class="input-box" style="position: relative; flex: 1;">
-              <input type="text" name="newsletter_name" required placeholder="Name" 
-                     style="width: 80%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px;">
-            </div>
-            <input type="submit" name="submit-login" value="Subscribe" 
-                   style="padding: 12px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">
-          </form>
+        <?php
+        if (!$subscribed) {
+            echo '<form action="/backend/php/newsletter.php" method="post" style="display: flex; flex-direction: row; gap: 15px;">
+                <div class="input-box" style="position: relative; flex: 1;">
+                    <input type="email" name="newsletter_email" required placeholder="Email" 
+                          style="width: 80%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px;">
+                </div>
+                <div class="input-box" style="position: relative; flex: 1;">
+                    <input type="text" name="newsletter_name" required placeholder="Name" 
+                          style="width: 80%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px;">
+                </div>
+                <input type="submit" name="submit-login" value="Subscribe" 
+                      style="padding: 12px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; max-width: 200px;">
+            </form>';
+        } else {
+            echo '<h4 style="position: absolute; color: white; font-family:sans-serif; width:400px; left:80px;">
+            Thank you for subscribing! We will update you about financial changes around the world.</h4>';
+        }
+        ?>
         </div>
 
         <div class="menu-images-container">
           <div class="info-container">
             <h1 style="margin-top: 30%; margin-left: 10%;">Data</h1>
-            <a href="./frontend/html/data_page.html">
+            <a href="/frontend/html/data_page.html">
               <div class="menu-img" id="data-img" style="background-image: url(./frontend/components/pictures/data-img.jpg);"></div>
             </a>
         
@@ -155,8 +178,8 @@
           </div>
           <div class="info-container">
             <h1 style="margin-top: 38%; margin-left: 60%;">Markets</h1>
-            <a href="./frontend/html/markets_page.html">
-              <div class="menu-img" id="markets-img" style="background-image: url(./frontend/components/pictures/markets-img.jpg);"></div>
+            <a href="/frontend/html/markets_page.html">
+              <div class="menu-img" id="markets-img" style="background-image: url(/frontend/components/pictures/markets-img.jpg);"></div>
             </a>
         
             <div class="data-paragraph" id="markets-text">
@@ -167,8 +190,8 @@
           </div>
           <div class="info-container">
             <h1 style="margin-top: 46%; margin-left: 1%;">Countries</h1>
-            <a href="./frontend/html/countries_page.html">
-              <div class="menu-img" id="countries-img" style="background-image: url(./frontend/components/pictures/countries-img.jpg);"></div>
+            <a href="/frontend/html/countries_page.html">
+              <div class="menu-img" id="countries-img" style="background-image: url(/frontend/components/pictures/countries-img.jpg);"></div>
             </a>
         
             <div class="data-paragraph" id="countries-text">
@@ -178,8 +201,8 @@
           </div>
           <div class="info-container">
             <h1 style="margin-top: 54%; margin-left: 64.5%;">News</h1>
-            <a href="./frontend/html/news_page.html">
-              <div class="menu-img" id="news-img" style="background-image: url(./frontend/components/pictures/news-img.jpg);"></div>
+            <a href="/frontend/html/news_page.html">
+              <div class="menu-img" id="news-img" style="background-image: url(/frontend/components/pictures/news-img.jpg);"></div>
             </a>
         
             <div class="data-paragraph" id="news-text">
@@ -251,7 +274,6 @@ window.addEventListener('scroll', function() {
 
 </script>
 
-   
 
 </body>
 

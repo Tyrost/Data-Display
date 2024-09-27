@@ -1,0 +1,220 @@
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background: none;
+    cursor: pointer;
+    filter: none;
+    padding: 0;
+    position: static;
+    transform: none;
+}
+
+.autocomplete-container {
+    position: absolute;
+    left: 5vh;
+}
+
+.time-span {
+    position: absolute;
+    left:53vh;
+
+}
+
+.start-date {
+    position: absolute;
+    left: 88vh;
+}
+
+.end-date {
+    position: absolute;
+    left: 135vh;
+}
+
+.time-span {
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+.time-span label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #ffffff;
+}
+
+.time-span select {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    appearance: none;
+    cursor: pointer;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background-position: right 10px center;
+    background-size: 10px 7px;
+    padding-right: 35px;
+}
+
+.time-span select:hover {
+    border-color: #66afe9;
+}
+
+.time-span select:focus {
+    border-color: #66afe9;
+    box-shadow: 0 0 5px rgba(102, 175, 233, 0.5);
+    outline: none;
+}
+
+.time-span select option {
+    padding: 10px;
+    font-size: 16px;
+}
+
+.time-span select::-ms-expand {
+    display: none;
+}
+
+.autocomplete-container {
+    width: 100%;
+    max-width: 250px;
+    margin-bottom: 20px;
+}
+
+.autocomplete-container label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: -30px;
+}
+
+.autocomplete-container input[type="text"] {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.autocomplete-container input[type="text"]:focus {
+    border-color: #66afe9;
+    box-shadow: 0 0 5px rgba(102, 175, 233, 0.5);
+    outline: none;
+}
+
+.autocomplete-container input[type="text"]:hover {
+    border-color: #888;
+}
+
+.autocomplete-container input[type="text"]::placeholder {
+    color: #999;
+}
+
+/* ---------------------------------------------------------------------------------- */
+
+.start-date, .end-date {
+    width: 250px;
+    margin-bottom: 20px;
+}
+
+.start-date label, .end-date label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: -30px;
+}
+
+.start-date input[type="date"], .end-date input[type="date"] {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    position: relative;
+}
+
+.start-date input[type="date"]:focus, .end-date input[type="date"]:focus {
+    border-color: #66afe9;
+    box-shadow: 0 0 5px rgba(102, 175, 233, 0.5);
+    outline: none;
+}
+
+.start-date input[type="date"]:hover, .end-date input[type="date"]:hover {
+    border-color: #888;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    right: 16px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    filter: invert(50%);
+}
+
+input[type="date"]::-ms-expand {
+    display: none;
+}
+
+.filter-container {
+    position: absolute;
+    right: 50px;
+    top: 54vh;
+    width: 150px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.filter-button {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 16px;
+    background-color: #3f67e9;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.filter-button:hover {
+    background-color: #0a07af;
+}
+
+.ui-autocomplete {
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 1000;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.ui-autocomplete .ui-menu-item {
+    padding: 8px 16px;
+    font-size: 14px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+.ui-autocomplete .ui-menu-item:last-child {
+    border-bottom: none;
+}
+
+.ui-autocomplete .ui-menu-item:hover,
+.ui-autocomplete .ui-state-focus {
+    background-color: #f0f0f0;
+}
+
+.ui-autocomplete .ui-menu-item:nth-child(n+6) {
+    display: none;
+}
+

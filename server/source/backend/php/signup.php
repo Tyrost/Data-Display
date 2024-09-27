@@ -26,7 +26,7 @@
 
     $statement->execute();
     
-    header('Location: ../../../login.html');
+    header('Location: /frontend/html/login_page.html');
     exit();
 
 ?>

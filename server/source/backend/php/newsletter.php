@@ -22,7 +22,13 @@
 
     $statement->execute();
     
-    header('Location: ../../index.html');
+    // Update global super variable for newsletter subscription status
+
+    session_start();
+
+    $_SESSION['newsletter_sub'] = true;
+
+    header('Location: /index.php');
     exit();
 
 ?>

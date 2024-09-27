@@ -1,46 +1,71 @@
 import requests
-import logging as log
-import datetime as dt
+import pandas as pd
+import sys
+import json
 
 # _____________________________________ GLOBAL MARKET DATA REQUEST _____________________________________ #
 
+# Module placeholder for analysis #
 
-log.basicConfig(level=log.DEBUG, format="%(asctime)s - %(levelname)s - %(message)s", datefmt="%Y-%m-%d %H:%M:%S")
+def get_data_points(data):
 
-CHECK_MARK = '\033[32m\u2714\033[0m'
-CROSS_MARK = '\033[31m\u2716\033[0m'
+    time = []
+    open_p = []
+    high_p = []
+    low_p = []
+    close_p = []
+    volume = []
+    avg_volume_w_p = []
+    trade_count = []
 
-def get_api_config(ticker:str, timespan:str, start_date:dt.date, end_date:dt.date):
-    timespan_options = ['day', 'week', 'month', 'year']
-    BASE_URL = f'https://api.polygon.io/v2/aggs/ticker/{ticker.strip().upper()}/range/1/'
-    url_config = ''
+    for field in data['results']:
+        time.append(field['t'])
+        open_p.append(field['o'])
+        high_p.append(field['h'])
+        low_p.append(field['l'])
+        close_p.append(field['c'])
+        volume.append(field['v'])
+        avg_volume_w_p.append(field['vw'])
+        trade_count.append(field['n'])
 
-    #Check inputs
-    if not (timespan in timespan_options):
-        log.warning('Time span option not supported.')
-        return
+    # time = pd.to_datetime(time, unit='ms').date
 
-    if start_date.year < 1900:
-        log.warning(f'Starting year date: {start_date.year} not supported. Must be greater than year 1900.')
+    data_dict = {
+        'Time': time,
+        'Open Price': open_p,
+        'Higher Price': high_p,
+        'Lower Price': low_p,
+        'Close Price': close_p,
+        'Volume': volume,
+        'Volume-Weighted AVG Price': avg_volume_w_p,
+        'Number of Trades': trade_count
+    }
 
-    if end_date.year > 2024:
-        log.warning(f'End year date: {end_date.year} not supported. Must be less than year 2024.')
+    return data_dict
 
-    url_config += f'{timespan}/{start_date}/{end_date}'
+def fetch_data(api_url, API_KEY='ysdb0tYtWz0iKhuNeCAz4PL6ei1rFXPa'):
+    try:
+        response = requests.get(f'{api_url}?apiKey={API_KEY}')
+        
+        if response.status_code == 200:
+            
+            data = response.json()
+            return get_data_points(data)
+        else:
+            raise ConnectionError(f'Status code {response.status_code}: Connection failed.')
+        
+    except requests.exceptions.RequestException as e:
+        raise SystemExit(f"Request Failed... Error:\n{e}")
 
-    request_url = BASE_URL + url_config
-    return request_url                       
-                        
-request_url = get_api_config('aapl', 'week', dt.date(2018, 1, 1), dt.date(2024, 1, 1)) # Must be dynamic with front-end ### FUTURE IMPLEMENTATION ###
+if __name__ == "__main__":
+    
+    api_url = sys.argv[1]
 
-API_KEY = 'ysdb0tYtWz0iKhuNeCAz4PL6ei1rFXPa'
+    try:
 
-response = requests.get(f'{request_url}?apiKey={API_KEY}')
+        data = fetch_data(api_url)
+        print(json.dumps(data, default=str))
 
-if response.status_code == 200:
-    log.info(f'API Call response {response.status_code}. {CHECK_MARK}')
-    data = response.json()
-
-else:
-    raise ConnectionError(f'Status code {response.status_code}: Connection failed.')
+    except Exception as e:
+        print(f"Error occurred: {e}")
 
